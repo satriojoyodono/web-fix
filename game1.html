@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Tic-Tac-Toe Bahasa Arab</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        header {
+            font-family: 'Times New Roman', serif;
+            background: linear-gradient(to right, #00b4d8, #0077b6);
+            padding: 20px;
+            text-align: center;
+            color: #fff;
+            font-size: 2.5em;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        .board-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+        }
+        .board {
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            gap: 10px;
+            margin-top: 20px;
+            justify-self: center;
+        }
+        .cell {
+            background-color: #0077b6;
+            color: white;
+            font-size: 1.5em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100px;
+            height: 100px;
+            border-radius: 10px;
+            position: relative;
+            transition: background-color 0.3s;
+        }
+        .cell img {
+            max-width: 80%;
+            max-height: 80%;
+        }
+        .choices {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-top: 20px;
+        }
+        .choice {
+            background-color: #00b4d8;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 5px;
+            cursor: pointer;
+            user-select: none;
+            transition: background-color 0.3s;
+            width: 150px;
+            text-align: center;
+        }
+        .choice:hover {
+            background-color: #0077b6;
+        }
+        .message-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .message {
+            font-size: 1.5em;
+            color: #00b4d8;
+            margin-bottom: 10px;
+        }
+        .scoreboard {
+            display: flex;
+            justify-content: space-between;
+            width: 200px;
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #00b4d8;
+            color: #fff;
+            border-radius: 10px;
+        }
+        .scoreboard div {
+            font-size: 1.5em;
+        }
+        .back-button {
+            position: absolute;
+            top: 25px;
+            right: 40px;
+            background-color: #00b4d8;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 20px;
+            transition: background-color 0.3s;
+        }
+        .back-button:hover {
+            background-color: #0077b6;
+        }
+        .verification-message {
+            font-size: 1.2em;
+            color: #0077b6;
+            margin-top: 10px;
+        }
+        footer {
+            background-color: #0077b6;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+        }
+        .fireworks {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .firework {
+            position: absolute;
+            background-color: #ff6600;
+            border-radius: 50%;
+            opacity: 0;
+            animation: firework 1s ease-in-out infinite;
+        }
+        @keyframes firework {
+            0% {
+                opacity: 1;
+                transform: scale(0);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(1.5);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        Game Tic-Tac-Toe Bahasa Arab
+        <button class="back-button" onclick="history.back()">Kembali</button>
+    </header>
+    <div class="container">
+        <div class="message" id="message">Giliran pemain X</div>
+        <div class="board-container">
+            <div class="board" id="board">
+                <!-- Cells will be created dynamically -->
+            </div>
+            <div class="choices" id="choices">
+                <!-- Choices will be created dynamically -->
+            </div>
+        </div>
+        <div class="message-container">
+            <div class="verification-message" id="verificationMessage"></div>
+            
+        </div>
+    </div>
+    <div class="fireworks" id="fireworks"></div>
+    <footer>
+        &copy; 2024 PINTAR BAHASA ARAB. All rights reserved.
+    </footer>
+    <script>
+        const board = document.getElementById('board');
+        const choices = document.getElementById('choices');
+        const message = document.getElementById('message');
+        const verificationMessage = document.getElementById('verificationMessage');
+        const fireworksContainer = document.getElementById('fireworks');
+        let currentPlayer = 'X';
+        let boardState = ['', '', '', '', '', '', '', '', ''];
+        let gameActive = true;
+
+        const professions = [
+            { image: 'gambar/dokter.png', arabic: 'طَبِيْبٌ' },
+            { image: 'gambar/guru.png', arabic: 'مُدَرِّسٌ' },
+            { image: 'gambar/petani.png', arabic: 'فَلَّاح' },
+            { image: 'gambar/polisi.png', arabic: 'شُرْطِيٌّ'},
+            { image: 'gambar/pemadam.png', arabic: 'رجل اطفاء' },
+            { image: 'gambar/tentara.png', arabic: 'جندي' },
+            { image: 'gambar/montir.png', arabic: 'ميكانيكي' },
+            { image: 'gambar/pilot.png', arabic: 'طَيَّارٌ' },
+            { image: 'gambar/nelayan.png', arabic: 'صَيَّاد' }
+        ];
+
+        const winningConditions = [
+            [0, 1, 2],
+            [3, 4, 5],
+            [6, 7, 8],
+            [0, 3, 6],
+            [1, 4, 7],
+            [2, 5, 8],
+            [0, 4, 8],
+            [2, 4, 6]
+        ];
+
+        function handleDrop(event) {
+            event.preventDefault();
+            const cell = event.target.closest('.cell');
+            const cellIndex = parseInt(cell.getAttribute('data-index'));
+            const word = event.dataTransfer.getData('text');
+            const correctWord = professions[cellIndex].arabic;
+
+            if (boardState[cellIndex] !== '' || !gameActive) {
+                return;
+            }
+
+            if (word === correctWord) {
+                boardState[cellIndex] = currentPlayer;
+                cell.innerHTML = currentPlayer;
+                cell.style.backgroundColor = currentPlayer === 'X' ? '#00b4d8' : '#00b4d8';
+                verificationMessage.innerText = `Benar! Pemain ${currentPlayer}`;
+            } else {
+                boardState[cellIndex] = currentPlayer === 'X' ? 'O' : 'X';
+                cell.innerHTML = currentPlayer === 'X' ? 'O' : 'X';
+                cell.style.backgroundColor = currentPlayer === 'X' ? '#00b4d8' : '#00b4d8';
+                verificationMessage.innerText = `Salah! Pemain ${currentPlayer}`;
+            }
+
+            if (checkWinner()) {
+                message.innerText = `Pemain ${currentPlayer} Menang!`;
+                gameActive = false;
+                triggerFireworks();
+            } else if (!boardState.includes('')) {
+                message.innerText = 'Hasil Imbang!';
+                gameActive = false;
+            } else {
+                currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+                message.innerText = `Giliran pemain ${currentPlayer}`;
+            }
+        }
+
+        function checkWinner() {
+            return winningConditions.some(condition => {
+                return condition.every(index => boardState[index] === currentPlayer);
+            });
+        }
+
+        function triggerFireworks() {
+            for (let i = 0; i < 10; i++) {
+                const firework = document.createElement('div');
+                firework.classList.add('firework');
+                firework.style.left = `${Math.random() * 100}%`;
+                firework.style.top = `${Math.random() * 100}%`;
+                fireworksContainer.appendChild(firework);
+
+                setTimeout(() => {
+                    firework.remove();
+                }, 1000);
+            }
+        }
+
+        function initializeBoard() {
+            // Reset board and choices
+            board.innerHTML = '';
+            choices.innerHTML = '';
+            boardState = ['', '', '', '', '', '', '', '', ''];
+            gameActive = true;
+            currentPlayer = 'X';
+            message.innerText = `Giliran pemain ${currentPlayer}`;
+            verificationMessage.innerText = '';
+
+            // Shuffle professions array
+            shuffle(professions);
+
+            // Create board cells
+            professions.forEach((profession, index) => {
+                const cell = document.createElement('div');
+                cell.classList.add('cell');
+                cell.setAttribute('data-index', index);
+                cell.innerHTML = `<img src="${profession.image}" alt="${profession.arabic}">`;
+                cell.ondragover = event => event.preventDefault();
+                cell.ondrop = handleDrop;
+                board.appendChild(cell);
+            });
+
+            // Create choices
+            professions.forEach((profession, index) => {
+                const choice = document.createElement('div');
+                choice.classList.add('choice');
+                choice.setAttribute('draggable', true);
+                choice.innerText = profession.arabic;
+                choice.ondragstart = event => event.dataTransfer.setData('text', profession.arabic);
+                choices.appendChild(choice);
+            });
+        }
+
+        // Function to shuffle array (Fisher-Yates algorithm)
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        // Initialize board when the page loads
+        initializeBoard();
+    </script>
+</body>
+</html>

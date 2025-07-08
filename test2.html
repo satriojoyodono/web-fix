@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="id">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Materi Barang</title>
+        <style>
+            body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            font-family: 'Times New Roman', serif;
+            background: linear-gradient(to right,  #00b4d8, #0077b6);
+            padding: 20px;
+            text-align: center;
+            color: white;
+            font-size: 2.5em;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #00b4d8;
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 1.2em;
+            transition: color 0.3s, transform 0.3s;
+        }
+        nav a:hover {
+            color: #90e0ef;
+            transform: scale(1.1);
+            }
+            .content {
+                text-align: center;
+                padding: 50px;
+            }
+            .content h1 {
+                font-size: 3em;
+                color: #0077b6;
+                margin-bottom: 20px;
+            }
+            .content p {
+                font-size: 1.2em;
+                color: #00000;
+                max-width: 800px;
+                margin: 0 auto;
+            }
+            .items {
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                margin-top: 30px;
+            }
+            .item {
+                background-color: #fff;
+                margin: 10px;
+                padding: 20px;
+                border-radius: 10px;
+                width: 300px; /* Ubah lebar sesuai kebutuhan */
+                text-align: left; /* Ubah menjadi left untuk teks */
+                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                transition: transform 0.3s, box-shadow 0.3s;
+                display: flex;
+                align-items: center;
+                gap: 10px; /* Jarak antara gambar dan teks */
+            }
+            .item:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            }
+            .item img {
+                width: 150px; /* Ukuran yang konsisten untuk gambar */
+                height: 150px; /* Ukuran yang konsisten untuk gambar */
+                object-fit: cover; /* Menjaga proporsi gambar agar tidak terdistorsi */
+                border-radius: 10px;
+            }
+            .item h3 {
+                font-size: 2em;
+                color: #0077b6;
+                margin: 5px 0;
+            }
+            .item p {
+                font-size: 1em;
+                color: #333;
+                margin-bottom: 10px;
+            }
+            .item .button-container {
+                display: flex;
+                justify-content: center;
+            }
+            .item button {
+                background-color: #00b4d8;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 1em;
+                transition: background-color 0.3s;
+            }
+            .item button:hover {
+                background-color: #0077b6;
+            }
+            footer {
+                background: linear-gradient(to right, #00b4d8, #0077b6);
+                color: white;
+                text-align: center;
+                padding: 10px;
+                box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+                position: fixed;
+                width: 100%;
+                bottom: 0;
+            }
+            .back-button {
+                background-color: #00b4d8;
+                color: white    ;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 1em;
+                margin-top: 20px;
+                transition: background-color 0.3s;
+            }
+            .back-button:hover {
+                background-color: #0077b6;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            Materi Barang
+        </header>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="game.html">Games</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+        <div class="content">
+            <h1>Barang-Barang dalam Bahasa Arab</h1>
+            <p>Belajar bahasa Arab dengan mengenali nama-nama barang yang sering kita temui sehari-hari. Mengenal nama barang dalam bahasa Arab dapat membantu memperkaya kosa kata dan kemampuan berbicara. Mari kita mulai dengan beberapa barang yang umum.</p>
+            <div class="items">
+                <div class="item">
+                    <img src="gambar/buku.png" alt="Kitab">
+                    <div>
+                        <h3>الكتاب</h3>
+                        <p>(Al-Kitāb)</p>
+                        <p>Kitab (Buku)</p>
+                        <div class="button-container">
+                            <button onclick="playSound('suara/kitab.mp3')">Dengar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="gambar/pulpen.jpg" alt="Pena">
+                    <div>
+                        <h3>القلم</h3>
+                        <p>(Al-Qalam)</p>
+                        <p>Pena (Pulpen)</p>
+                        <div class="button-container">
+                            <button onclick="playSound('suara/pena.mp3')">Dengar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="gambar/meja.jpg" alt="Meja">
+                    <div>
+                        <h3>الطاولة</h3>
+                        <p>(At-Tāwilah)</p>
+                        <p>Meja</p>
+                        <div class="button-container">
+                            <button onclick="playSound('suara/meja.mp3')">Dengar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="gambar/kursi.jpg" alt="Kursi">
+                    <div>
+                        <h3>الكرسي</h3>
+                        <p>(Al-Kursī)</p>
+                        <p>Kursi</p>
+                        <div class="button-container">
+                            <button onclick="playSound('suara/kursi.mp3')">Dengar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="gambar/pintu.jpg" alt="Pintu">
+                    <div>
+                        <h3>الباب</h3>
+                        <p>(Al-Bāb)</p>
+                        <p>Pintu</p>
+                        <div class="button-container">
+                            <button onclick="playSound('suara/pintu.mp3')">Dengar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="gambar/jendela.jpg" alt="Jendela">
+                    <div>
+                        <h3>النافذة</h3>
+                        <p>(An-Nāfidhah)</p>
+                        <p>Jendela</p>
+                        <div class="button-container">
+                            <button onclick="playSound('suara/jendela.mp3')">Dengar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="gambar/kulkas.jpg" alt="Kulkas">
+                    <div>
+                        <h3>الثلاجة</h3>
+                        <p>(Ath-Thalājah)</p>
+                        <p>Kulkas</p>
+                        <div class="button-container">
+                            <button onclick="playSound('suara/kulkas.mp3')">Dengar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="gambar/televisi.jpg" alt="Televisi">
+                    <div>
+                        <h3>التلفاز</h3>
+                        <p>(At-Tilfaz)</p>
+                        <p>Televisi</p>
+                        <div class="button-container">
+                            <button onclick="playSound('suara/tv.mp3')">Dengar</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tambahkan barang-barang lainnya sesuai kebutuhan -->
+            </div>
+            <button class="back-button" onclick="history.back()">Kembali</button>
+        </div>
+        <footer>
+            &copy; 2024 PINTAR BAHASA ARAB. All rights reserved.
+        </footer>
+        <script>
+            function playSound(url) {
+                new Audio(url).play();
+            }
+        </script>
+    </body>
+</html>

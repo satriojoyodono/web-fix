@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Games Huruf Hijaiyah</title>
+    <style>
+       body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            font-family: 'Times New Roman', serif;
+            background: linear-gradient(to right,  #00b4d8, #0077b6);
+            padding: 20px;
+            text-align: center;
+            color: white;
+            font-size: 2.5em;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #00b4d8;
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 1.2em;
+            transition: color 0.3s, transform 0.3s;
+        }
+        nav a:hover {
+            color: #90e0ef;
+            transform: scale(1.1);
+        }
+        .content {
+            text-align: center;
+            padding: 50px;
+        }
+        .content h1 {
+            font-size: 3em;
+            color: #0077b6;
+            margin-bottom: 20px;
+        }
+        .games {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        .game {
+            background-color: #fff;
+            margin: 10px;
+            padding: 20px;
+            border-radius: 10px;
+            width: 200px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .game:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+        .game img {
+            width: 100px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        .game h3 {
+            font-size: 1.5em;
+            color: #000;
+            margin-bottom: 10px;
+        }
+        .game button {
+            background-color: #00b4d8;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+        .game button:hover {
+            background-color: #0077b6;       }
+        footer {
+            background: linear-gradient(to right, #00b4d8, #0077b6);
+            color: white;
+            text-align: center;
+            padding: 10px;
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        .back-button {
+            background-color: #00b4d8;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+        .back-button:hover {
+            background-color: #0077b6;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        Games 
+    </header>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="game.html">Games</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+    <div class="content">
+        <h1>Pilih Game</h1>
+        <div class="games">
+            <div class="game">
+                <img src="gambar/tictactoe game.png" alt="Game 1">
+                <h3>Tic-Tac-Toe Bahasa Arab</h3>
+                <button onclick="location.href='aturanpermainangame1.html'">Mainkan</button>
+            </div>
+            <div class="game">
+                <img src="gambar/profesigame.jpg" alt="Game 2">
+                <h3>Mengartikan Gambar</h3>
+                <button onclick="location.href='aturanpermainangame2.html'">Mainkan</button>
+            </div>
+            <div class="game">
+                <img src="gambar/game3.jpg" alt="Game 3">
+                <h3>Game 3: Puzzle Huruf</h3>
+                <button onclick="location.href='game3.html'">Mainkan</button>
+            </div>
+            <div class="game">
+                <img src="gambar/game4.jpg" alt="Game 4">
+                <h3>Game 4: Menulis Huruf</h3>
+                <button onclick="location.href='game4.html'">Mainkan</button>
+            </div>
+        </div>
+        <button class="back-button" onclick="history.back()">Kembali</button>
+    </div>
+    <footer>
+        &copy; 2024 PINTAR BAHASA ARAB. All rights reserved.
+    </footer>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aturan Permainan Tic Tac Toe</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        header {
+            font-family: 'Times New Roman', serif;
+            background: linear-gradient(to right, #00b4d8, #0077b6);
+            padding: 15px;
+            text-align: center;
+            color: #fff;
+            font-size: 2em;
+            width: 100%;
+        }
+        .back-button {
+            position: absolute;
+            top: 15px;
+            right: 40px;
+            background-color: #00b4d8;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 20px;
+            transition: background-color 0.3s;
+        }
+        .back-button:hover {
+            background-color: #0077b6;
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+            margin-top: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+        }
+        .input-container {
+            margin-top: 20px;
+        }
+        .input-container button {
+            padding: 10px;
+            font-size: 1.2em;
+            margin-top: 10px;
+            margin-right: 5px;
+            margin-left: 5px;
+            border-radius: 5px;
+            border: 2px solid #00bcd4;
+            width: 30%;
+            background-color: #00bcd4;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .input-container button:hover {
+            background-color: #0097a7;
+        }
+        footer {
+            margin-top: auto;
+            background-color: #00bcd4;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <button class="back-button" onclick="history.back()">Kembali</button>
+        Aturan Permainan Tic Tac Toe
+    </header>
+    <div class="container">
+        <h2>Selamat datang di Game Tic Tac Toe!</h2>
+        <p>Aturan permainan:</p>
+        <ul>
+            <p><li>Pemain: Dua pemain bergiliran menggunakan simbol "X" dan "O".</li></p>
+            <p><li>Papan terdiri dari 9 kotak yang disusun dalam 3 baris dan 3 kolom.</li></p>
+            <p><li>Pemain bergiliran untuk menempatkan simbol mereka di kotak kosong.</li></p>
+            <p><li>Pemain menang jika berhasil menempatkan tiga simbol dalam satu baris (horizontal, vertikal, atau diagonal).</li></p>
+            <p><li>Jika semua kotak terisi dan tidak ada yang menang, permainan berakhir seri.</li></p>
+        </ul>
+        <div class="input-container">
+            <label for="levelSelect">Pilih Level Kesulitan:</label><br>
+            <button onclick="setLevel(1)">Level 1</button>
+            <button onclick="setLevel(2)">Level 2</button>
+            <button onclick="setLevel(3)">Level 3</button>
+        </div>
+    </div>
+    <footer>
+        &copy; 2024 PINTAR BAHASA ARAB. All rights reserved.
+    </footer>
+    <script>
+        function setLevel(level) {
+            localStorage.setItem('gameLevel', level); // Simpan level ke localStorage
+            window.location.href = 'game1.html'; // Ganti dengan nama file permainan Anda
+        }
+    </script>
+</body>
+</html>
