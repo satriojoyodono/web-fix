@@ -3,130 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Tebak Gambar</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #ffffff;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-        }
-        header {
-            font-family: 'Times New Roman', serif;
-            background: linear-gradient(to right, #00b4d8, #0077b6);
-            padding: 15px;
-            text-align: center;
-            color: #fff;
-            font-size: 2em;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            position: relative;
-            z-index: 10;
-        }
-        .back-button {
-            position: absolute;
-            top: 15px;
-            right: 40px;
-            background-color: #00b4d8;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 20px;
-            transition: background-color 0.3s;
-        }
-        .back-button:hover {
-            background-color: #0077b6;
-        }
-        .container {
-            text-align: center;
-            padding: 20px;
-            margin-top: 20px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-        }
-        .image-container {
-            width: 300px;
-            height: 300px;
-            border: 1px solid #00bcd4; 
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #fff; 
-            margin-bottom: 20px;
-        }
-        .image-container img {
-            max-width: 100%;
-            max-height: 100%;
-        }
-        .description-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 5px;
-        }
-        .description-container div {
-            font-size: 1.2em;
-            color: #00bcd4; 
-        }
-        .input-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
-        }
-        .input-container input {
-            padding: 10px;
-            font-size: 1.2em;
-            border: 2px solid #00bcd4; 
-            border-radius: 5px;
-            width: 250px;
-        }
-        .input-container button {
-            background-color: #00bcd4;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1em;
-            transition: background-color 0.3s;
-        }
-        .input-container button:hover {
-            background-color: #0097a7; 
-        }
-        .message {
-            font-size: 1.5em;
-            color: #00bcd4; 
-            margin-top: 10px;
-        }
-        .score {
-            font-size: 1.5em;
-            color: #0077b6;
-            margin-top: 10px;
-        }
-        footer {
-            background-color: #00bcd4;
-            color: white;
-            text-align: center;
-            padding: 10px;
-            width: 100%;
-            margin-top: auto;
-        }
-    </style>
+    <title>Game Tebak Gambar - PROFESI</title>
+    <link rel="stylesheet" href="css/level2game2.css">
 </head>
 <body>
     <header>
-        Game Tebak Gambar
+        Game Tebak Gambar 
         <button class="back-button" onclick="history.back()">Kembali</button>
     </header>
     <div class="container">
@@ -144,19 +26,19 @@
         <div class="score" id="score"></div>
     </div>
     <footer>
-        &copy; 2024 PINTAR BAHASA ARAB. All rights reserved.
+        &copy; 2025 PINTAR BAHASA ARAB. All rights reserved.
     </footer>
     <script>
         const images = [
-            { src: 'gambar/dokter.png', answer: 'dokter', arabic: 'طَبِيْبٌ' },
-            { src: 'gambar/guru.png', answer: 'guru', arabic: 'مُدَرِّسٌ' },
-            { src: 'gambar/petani.png', answer: 'petani', arabic: 'فَلَّاح' },
-            { src: 'gambar/polisi.png', answer: 'polisi', arabic: 'شُرْطِيٌّ' },
-            { src: 'gambar/pemadam.png', answer: 'pemadam kebakaran', arabic: 'رجل اطفاء' },
-            { src: 'gambar/tentara.png', answer: 'tentara', arabic: 'جندي' },
-            { src: 'gambar/montir.png', answer: 'montir', arabic: 'ميكانيكي' },
-            { src: 'gambar/pilot.png', answer: 'pilot', arabic: 'طَيَّارٌ' },
-            { src: 'gambar/nelayan.png', answer: 'nelayan', arabic: 'صَيَّاد' }
+           { src: 'gambar/dokter.png', answer: 'dokter', arabic: 'طَبِيْبٌ', latin: 'Thabīb' },
+            { src: 'gambar/guru.png', answer: 'guru', arabic: 'مُدَرِّسٌ', latin: 'Mudarris' },
+            { src: 'gambar/petani.png', answer: 'petani', arabic: 'فَلَّاح', latin: 'Fallāḥ' },
+            { src: 'gambar/polisi.png', answer: 'polisi', arabic: 'شُرْطِيٌّ', latin: 'Shurṭī' },
+            { src: 'gambar/pemadam.png', answer: 'pemadam kebakaran', arabic: 'رجل اطفاء', latin: 'Rajul iṭfāʼ' },
+            { src: 'gambar/tentara.png', answer: 'tentara', arabic: 'جندي', latin: 'Jundī' },
+            { src: 'gambar/montir.png', answer: 'montir', arabic: 'ميكانيكي', latin: 'Mīkānīkī' },
+            { src: 'gambar/pilot.png', answer: 'pilot', arabic: 'طَيَّارٌ', latin: 'Ṭayyār' },
+            { src: 'gambar/nelayan.png', answer: 'nelayan', arabic: 'صَيَّاد', latin: 'Ṣayyād' }
         ];
 
         let currentImageIndex = 0;
@@ -169,23 +51,28 @@
         }
 
         function loadNextImage() {
-    if (currentImageIndex < selectedImages.length) {
-        const currentImage = selectedImages[currentImageIndex];
-        document.getElementById('image').style.display = 'block';
-        document.getElementById('image').src = currentImage.src;
-        document.getElementById('arabicDescription').innerText = currentImage.arabic;
-        document.getElementById('guessInput').value = '';
-        document.getElementById('message').innerText = '';
-    } else {
-        // Tampilkan pesan selesai dan skor
-        document.getElementById('message').innerText = `Selamat! Anda telah menyelesaikan semua gambar! Skor akhir Anda adalah ${score} dari ${selectedImages.length}.`;
+            if (currentImageIndex < selectedImages.length) {
+                const currentImage = selectedImages[currentImageIndex];
+                document.getElementById('image').style.display = 'block';
+                document.getElementById('image').src = currentImage.src;
+                document.getElementById('arabicDescription').innerText = currentImage.arabic;
+                document.getElementById('guessInput').value = '';
+                document.getElementById('message').innerText = '';
+            } else {
+                // Tampilkan GIF lucu dan skor akhir
+                document.getElementById('imageContainer').innerHTML = `
+                    <img src="gambar/jempol.gif" alt="GIF Lucu" style="max-width: 100%; max-height: 100%;">
+                `;
+                document.getElementById('message').innerText = `Selamat! Anda telah menyelesaikan semua gambar! Skor akhir Anda adalah ${score} dari ${selectedImages.length}.`;
 
-        // Nonaktifkan dan sembunyikan input dan tombol
-        document.getElementById('guessInput').style.display = 'none';
-        document.querySelector('.input-container button').style.display = 'none';
-    }
-}
+                // Hapus deskripsi Arab
+                document.getElementById('arabicDescription').innerText = '';
 
+                // Nonaktifkan dan sembunyikan input dan tombol
+                document.getElementById('guessInput').style.display = 'none';
+                document.querySelector('.input-container button').style.display = 'none';
+            }
+        }
 
         function checkAnswer() {
             const userAnswer = document.getElementById('guessInput').value.trim().toLowerCase();
@@ -205,7 +92,6 @@
             loadNextImage();
             document.getElementById('score').innerText = `Skor: ${score}`;
         };
-        
     </script>
 </body>
 </html>
